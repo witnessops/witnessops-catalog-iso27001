@@ -1,0 +1,346 @@
+[
+  {
+    "workflow_id": "ISO27001-001",
+    "workflow_name": "ISMS scope and context review",
+    "trigger": [
+      "new ISMS scope is proposed",
+      "material business or architecture change occurs",
+      "annual scope review starts"
+    ],
+    "owner": "isms_owner",
+    "deadline": {
+      "type": "periodic_review",
+      "value": null
+    },
+    "required_evidence": [
+      "scope_statement",
+      "context_review_record",
+      "interested_parties_record",
+      "approval_record"
+    ],
+    "status_states": [
+      "draft",
+      "under_review",
+      "approved",
+      "active",
+      "superseded"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["4.1", "4.2", "4.3"],
+      "isms_surface": ["context_and_scope"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-002",
+    "workflow_name": "Information security policy issue and attestation",
+    "trigger": [
+      "policy is issued",
+      "policy is materially updated",
+      "attestation cycle starts"
+    ],
+    "owner": "policy_owner",
+    "deadline": {
+      "type": "internal_policy",
+      "value": null
+    },
+    "required_evidence": [
+      "policy_hash",
+      "attestation_log",
+      "signer_identity",
+      "attestation_timestamp"
+    ],
+    "status_states": [
+      "scheduled",
+      "open",
+      "in_progress",
+      "completed",
+      "overdue"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["5.2", "7.3", "7.4", "7.5"],
+      "isms_surface": ["policy_management", "awareness_and_communication"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-003",
+    "workflow_name": "Information security risk assessment lifecycle",
+    "trigger": [
+      "new system or service enters scope",
+      "material change occurs",
+      "risk review cycle starts",
+      "major incident occurs"
+    ],
+    "owner": "risk_owner",
+    "deadline": {
+      "type": "periodic_review",
+      "value": null
+    },
+    "required_evidence": [
+      "risk_assessment_record",
+      "risk_method_reference",
+      "risk_register_entry",
+      "review_timestamp"
+    ],
+    "status_states": [
+      "draft",
+      "under_review",
+      "approved",
+      "active",
+      "expired"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["6.1.2", "8.2"],
+      "isms_surface": ["risk_assessment"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-004",
+    "workflow_name": "Risk treatment plan and acceptance",
+    "trigger": [
+      "risk assessment completes",
+      "new unacceptable risk is identified",
+      "treatment review cycle starts"
+    ],
+    "owner": "risk_treatment_owner",
+    "deadline": {
+      "type": "risk_based_review_cycle",
+      "value": null
+    },
+    "required_evidence": [
+      "risk_treatment_plan",
+      "risk_owner_decision",
+      "acceptance_or_escalation_record",
+      "tracking_updates"
+    ],
+    "status_states": [
+      "open",
+      "treatment_in_progress",
+      "accepted",
+      "closed",
+      "overdue"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["6.1.3", "8.3"],
+      "isms_surface": ["risk_treatment"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-005",
+    "workflow_name": "Statement of Applicability maintenance",
+    "trigger": [
+      "risk treatment changes",
+      "control set changes",
+      "periodic SoA review starts"
+    ],
+    "owner": "control_governance_owner",
+    "deadline": {
+      "type": "periodic_review",
+      "value": null
+    },
+    "required_evidence": [
+      "statement_of_applicability",
+      "control_inclusion_exclusion_rationale",
+      "version_record",
+      "approval_record"
+    ],
+    "status_states": [
+      "draft",
+      "under_review",
+      "approved",
+      "active",
+      "superseded"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["6.1.3", "7.5"],
+      "isms_surface": ["control_governance", "documented_information"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-006",
+    "workflow_name": "Competence and training evidence management",
+    "trigger": [
+      "new role enters ISMS scope",
+      "training cycle starts",
+      "competence gap is identified"
+    ],
+    "owner": "people_assurance_owner",
+    "deadline": {
+      "type": "internal_policy",
+      "value": null
+    },
+    "required_evidence": [
+      "training_record",
+      "competence_assessment",
+      "completion_evidence",
+      "followup_actions"
+    ],
+    "status_states": [
+      "scheduled",
+      "in_progress",
+      "completed",
+      "gap_identified",
+      "overdue"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["7.2", "7.3"],
+      "isms_surface": ["competence_and_awareness"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-007",
+    "workflow_name": "Operational change and control evidence review",
+    "trigger": [
+      "material operational change occurs",
+      "control implementation changes",
+      "evidence review cycle starts"
+    ],
+    "owner": "operations_assurance_owner",
+    "deadline": {
+      "type": "internal_gate",
+      "value": "before_control_change_is_accepted"
+    },
+    "required_evidence": [
+      "change_record",
+      "control_evidence",
+      "review_decision",
+      "residual_risk_note"
+    ],
+    "status_states": [
+      "submitted",
+      "under_review",
+      "approved",
+      "rejected",
+      "closed"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["8.1", "8.3"],
+      "isms_surface": ["operations", "control_change_review"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-008",
+    "workflow_name": "Monitoring, measurement, and KPI review",
+    "trigger": [
+      "reporting cycle starts",
+      "threshold breach occurs",
+      "management review requires updates"
+    ],
+    "owner": "performance_owner",
+    "deadline": {
+      "type": "governance_reporting_cycle",
+      "value": null
+    },
+    "required_evidence": [
+      "metric_snapshot",
+      "measurement_method_reference",
+      "trend_review",
+      "action_record"
+    ],
+    "status_states": [
+      "scheduled",
+      "assembled",
+      "reviewed",
+      "issued",
+      "overdue"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["9.1"],
+      "isms_surface": ["monitoring_and_measurement"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-009",
+    "workflow_name": "Internal audit program and finding management",
+    "trigger": [
+      "audit cycle starts",
+      "audit plan is issued",
+      "finding is raised"
+    ],
+    "owner": "internal_audit_owner",
+    "deadline": {
+      "type": "program_cycle",
+      "value": null
+    },
+    "required_evidence": [
+      "audit_plan",
+      "audit_report",
+      "finding_record",
+      "remediation_tracking"
+    ],
+    "status_states": [
+      "planned",
+      "in_execution",
+      "reported",
+      "tracking",
+      "closed"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["9.2", "10.1"],
+      "isms_surface": ["internal_audit", "corrective_action"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-010",
+    "workflow_name": "Management review meeting and decision ledger",
+    "trigger": [
+      "management review cycle starts",
+      "major change occurs",
+      "major incident occurs",
+      "audit outcome requires review"
+    ],
+    "owner": "management_review_owner",
+    "deadline": {
+      "type": "governance_reporting_cycle",
+      "value": null
+    },
+    "required_evidence": [
+      "management_review_pack",
+      "decision_log",
+      "assigned_actions",
+      "followup_tracking"
+    ],
+    "status_states": [
+      "scheduled",
+      "assembled",
+      "reviewed",
+      "decisions_issued",
+      "closed"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["9.3", "10.1"],
+      "isms_surface": ["management_review", "continuous_improvement"]
+    }
+  },
+  {
+    "workflow_id": "ISO27001-011",
+    "workflow_name": "Nonconformity and corrective action",
+    "trigger": [
+      "audit finding is raised",
+      "control failure is identified",
+      "policy breach is identified"
+    ],
+    "owner": "corrective_action_owner",
+    "deadline": {
+      "type": "severity_based_internal_sla",
+      "value": null
+    },
+    "required_evidence": [
+      "nonconformity_record",
+      "root_cause_analysis",
+      "corrective_action_plan",
+      "effectiveness_review"
+    ],
+    "status_states": [
+      "open",
+      "investigating",
+      "remediation_in_progress",
+      "effectiveness_review",
+      "closed",
+      "overdue"
+    ],
+    "iso27001_mapping": {
+      "clauses": ["10.1", "10.2"],
+      "isms_surface": ["nonconformity", "corrective_action"]
+    }
+  }
+]
