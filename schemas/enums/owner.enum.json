@@ -1,0 +1,17 @@
+{
+  "name": "owner",
+  "type": "string",
+  "enum": [
+    "control_governance_owner",
+    "corrective_action_owner",
+    "internal_audit_owner",
+    "isms_owner",
+    "management_review_owner",
+    "operations_assurance_owner",
+    "people_assurance_owner",
+    "performance_owner",
+    "policy_owner",
+    "risk_owner",
+    "risk_treatment_owner"
+  ]
+}
