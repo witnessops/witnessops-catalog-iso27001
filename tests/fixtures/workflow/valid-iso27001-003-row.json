@@ -1,0 +1,37 @@
+{
+  "workflow_id": "ISO27001-003",
+  "workflow_name": "Information security risk assessment lifecycle",
+  "trigger": [
+    "new system or service enters scope",
+    "material change occurs",
+    "risk review cycle starts",
+    "major incident occurs"
+  ],
+  "owner": "risk_owner",
+  "deadline": {
+    "type": "periodic_review",
+    "value": null
+  },
+  "required_evidence": [
+    "risk_assessment_record",
+    "risk_method_reference",
+    "risk_register_entry",
+    "review_timestamp"
+  ],
+  "status_states": [
+    "draft",
+    "under_review",
+    "approved",
+    "active",
+    "expired"
+  ],
+  "iso27001_mapping": {
+    "clauses": [
+      "6.1.2",
+      "8.2"
+    ],
+    "isms_surface": [
+      "risk_assessment"
+    ]
+  }
+}
