@@ -16,6 +16,9 @@ Boundary:
 
 - `catalog/iso27001-workflows.v1.json` — initial machine-readable workflow catalog
 - `schemas/workflow-catalog.schema.json` — top-level catalog schema
+- `schemas/iso27001-mapping.schema.json` — existing dedicated mapping schema
+- `schemas/enums/` — retained owner, clause, and deadline-type enum documents
+- `tests/fixtures/` — existing workflow-row and mapping examples, including invalid cases
 - `scripts/validate_catalog.py` — local validator for catalog JSON files
 - `.github/workflows/validate-catalog.yml` — CI gate enforcing schema validation on push and pull request
 
@@ -40,6 +43,12 @@ Each workflow row contains:
 
 This repository starts clause-oriented rather than Annex-A-oriented.
 
+The top-level schema already references the dedicated mapping schema. Owner
+constraints are defined in the top-level schema's `$defs.ownerEnum`; clause
+constraints are in the mapping schema's `$defs.isoClauseEnum`. The standalone
+enum documents are not those `$ref` targets. Changing an enum document alone
+does not change these active schema constraints.
+
 ## Validation
 
 Local validation:
@@ -50,9 +59,15 @@ python scripts/validate_catalog.py
 ```
 
 CI validation:
-- runs on pushes to `main`
+- runs on pushes to `main` affecting the configured catalog, schema, validator, or workflow paths
 - runs on pull requests affecting catalog, schema, validator, or workflow files
 - fails the build if any catalog JSON file no longer conforms to the schema
+
+The validator iterates `catalog/*.json`; it does not replay the standalone files
+under `tests/fixtures/`. Fixture presence is not fixture-test acceptance.
+README-only changes do not trigger the path-filtered catalog workflow. Catalog
+validation establishes structural conformance, not ISO certification, legal
+applicability, or operational evidence.
 
 ## Design notes
 
@@ -66,7 +81,10 @@ This repository currently stores the workflow catalog only. It does not yet cont
 
 ## Next useful additions
 
-- normalized enums for owner and clause references
-- dedicated schema for `iso27001_mapping`
-- golden fixtures for valid and invalid workflow rows
+The enum definitions, dedicated mapping schema, and example fixtures listed
+above already exist. The items below are possible extensions, not approval to
+change catalog semantics or claims that those structures are still absent:
+
+- extend owner/clause coverage or mapping fields only for a concrete catalog need, with separate schema review
+- expand valid/invalid workflow and mapping fixtures and add explicit fixture replay when that work is selected
 - CSV/JSONL export generation
